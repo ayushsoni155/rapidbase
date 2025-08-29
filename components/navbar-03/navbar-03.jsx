@@ -1,0 +1,49 @@
+"use client";
+
+import React, { useState } from "react";
+import { useSession, signOut } from "next-auth/react";
+import LoginPopup from "@/components/global/LoginPopup";
+import { Button } from "@/components/ui/button";
+import { NavMenu } from "./nav-menu";
+import { NavigationSheet } from "./navigation-sheet";
+import { ArrowUpRight, Bot } from "lucide-react";
+import { ThemeToggle } from "../global/ThemeToggel";
+
+const Navbar03Page = () => {
+  const { data: session, status } = useSession();
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  return (
+    <>
+   <div className="flex fixed top-1 justify-center items-center w-full py-2 z-50">
+  <nav
+    className="flex h-14 w-full max-w-5xl items-center justify-between px-3 
+               rounded-full border bg-background shadow-sm shadow-[0_0_15px] shadow-primary/40 dark:shadow-[0_0_20px] dark:shadow-primary/30
+               transition-all">
+    {/* Left */}
+    <div className="flex items-center gap-4">
+      <div className="flex items-center gap-1 font-semibold ml-1">
+        <Bot className="h-5 w-5" /> Rapidbase
+      </div>
+      <NavMenu className="hidden md:block" />
+    </div>
+
+    {/* Right */}
+    <div className="flex items-center gap-3 ">
+      <div  className="flex items-center gap-3 hidden sm:flex">
+      <Button className="rounded-full px-4 py-2" onClick={() => setIsLoginOpen(true)}>
+        Get Started <ArrowUpRight className="ml-1 h-4 w-4" />
+      </Button>
+        <ThemeToggle />
+      </div>
+      <div className="md:hidden">
+        <NavigationSheet />
+      </div>
+    </div>
+  </nav>
+</div>
+<LoginPopup open={isLoginOpen} onOpenChange={setIsLoginOpen} />
+</>
+  );
+};
+
+export default Navbar03Page;
