@@ -1,6 +1,8 @@
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import Provider from "@/providers/Provider";
+import { Toaster } from "@/components/ui/sonner";
+import SessionWatcher from "@/providers/SessionWatcher";
 
 export default function RootLayout({ children }) {
   return (
@@ -18,7 +20,14 @@ export default function RootLayout({ children }) {
               easing="ease"
               speed={200}
             />
-            <Provider>{children}</Provider>
+            <Provider>    
+            <Toaster 
+            expand={false}
+            position="top-center"
+            richColors
+            closeButton />
+            <SessionWatcher />
+              {children}</Provider>
         </body>
       </html>
     </>

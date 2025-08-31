@@ -10,7 +10,7 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
     GitHubProvider({
-      clientId: process.env.GITHUB_ID,
+      clientId: process.env.GITHUB_ID, 
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
@@ -36,7 +36,6 @@ export const authOptions = {
           user.backendToken = res.data.data.token;
           user.backendId = res.data.data.id;
         }
-
         return true;
       } catch (error) {
         console.error("Social login error:", error);
