@@ -7,7 +7,9 @@ import { Button } from "@/components/ui/button";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
 import { ArrowUpRight, Bot } from "lucide-react";
-import { ThemeToggle } from "../global/ThemeToggel";
+import ThemeToggleButton from "@/components/ui/theme-toggle-button";
+
+
 
 const Navbar03Page = () => {
   const { data: session, status } = useSession();
@@ -33,7 +35,7 @@ const Navbar03Page = () => {
       <Button className="rounded-full px-4 py-2" onClick={() => setIsLoginOpen(true)}>
         Get Started <ArrowUpRight className="ml-1 h-4 w-4" />
       </Button>
-        <ThemeToggle />
+         <ThemeToggleButton variant="circle-blur" start="top-right" />
       </div>
       <div className="md:hidden">
         <NavigationSheet />

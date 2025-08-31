@@ -7,7 +7,7 @@ import { features, resources } from "./config";
 import { Logo } from "./logo";
 import Link from "next/link";
 import { DialogTitle } from "@/components/ui/dialog"; 
-import { ThemeToggle } from "../global/ThemeToggel"; // ✅ import theme toggle
+import ThemeToggleButton from "@/components/ui/theme-toggle-button";
 import { ArrowUpRight } from "lucide-react";
 
 export const NavigationSheet = () => {
@@ -28,7 +28,7 @@ export const NavigationSheet = () => {
         <Logo />
   {/* Mobile-only Actions */}
         <div className=" flex flex-row-reverse gap-2 md:hidden">
-          <ThemeToggle className="" /> {/* full-width toggle */}
+          <ThemeToggleButton variant="circle-blur" start="top-right" />
           <Button className="w-45 rounded-full">
             Get Started <ArrowUpRight className="ml-2 h-4 w-4" />
           </Button>

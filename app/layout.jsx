@@ -1,7 +1,6 @@
-import { ThemeProvider } from "@/providers/theme-provider";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
-import AuthProvider from "@/providers/AuthProvider";
+import Provider from "@/providers/Provider";
 
 export default function RootLayout({ children }) {
   return (
@@ -9,12 +8,6 @@ export default function RootLayout({ children }) {
       <html lang="en" suppressHydrationWarning>
         <head />
         <body>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
             <NextTopLoader
               color="hsl(var(--primary))"
               initialPosition={0.3}
@@ -25,9 +18,7 @@ export default function RootLayout({ children }) {
               easing="ease"
               speed={200}
             />
-
-            <AuthProvider>{children}</AuthProvider>
-          </ThemeProvider>
+            <Provider>{children}</Provider>
         </body>
       </html>
     </>
