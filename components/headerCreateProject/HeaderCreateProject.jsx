@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ThemeToggle } from "../global/ThemeToggel";
 import CommandMenu from "../global/CommandMenu";
+import ThemeToggleButton from "@/components/ui/theme-toggle-button";
 
 function HeaderCreateProject() {
   return (
@@ -25,7 +26,7 @@ function HeaderCreateProject() {
           <div className=" md:w-40 lg:w-64">
             <CommandMenu />
           </div>
-          <ThemeToggle />
+        <ThemeToggleButton variant="circle-blur" start="top-right" />
         </div>
       </div>
     </header>
