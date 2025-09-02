@@ -10,24 +10,26 @@ export default function RootLayout({ children }) {
       <html lang="en" suppressHydrationWarning>
         <head />
         <body>
-            <NextTopLoader
-              color="hsl(var(--primary))"
-              initialPosition={0.3}
-              crawlSpeed={200}
-              height={3}
-              crawl={true}
-              showSpinner={false}
-              easing="ease"
-              speed={200}
+          <NextTopLoader
+            color="hsl(var(--primary))"
+            initialPosition={0.3}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            showSpinner={false}
+            easing="ease"
+            speed={200}
+          />
+          <Provider>
+            <Toaster
+              expand={false}
+              position="top-center"
+              richColors
+              closeButton
             />
-            <Provider>    
-            <Toaster 
-            expand={false}
-            position="top-center"
-            richColors
-            closeButton />
             <SessionWatcher />
-              {children}</Provider>
+            {children}
+          </Provider>
         </body>
       </html>
     </>
