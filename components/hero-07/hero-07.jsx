@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight, CirclePlay } from "lucide-react";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { toast } from "sonner";
 
@@ -39,14 +40,15 @@ const Hero07 = () => {
         </p>
 
         <div className="mt-12 flex items-center justify-center gap-4">
-          <Button size="lg" className="rounded-full text-base" onClick={() => toast.success("Hello world!")}>
+          <Button size="lg" className="text-base" onClick={() => toast.success("Hello world!")}>
             Get Started <ArrowUpRight className="!h-5 !w-5" />
           </Button>
           <Button
             variant="outline"
             size="lg"
-            className="rounded-full text-base shadow-none">
-            <CirclePlay className="!h-5 !w-5" /><Link href="/project/create-project"> Watch Demo</Link>
+            onClick={() => signOut()}
+            className=" text-base shadow-none">
+            <CirclePlay className="!h-5 !w-5" /> Watch Demo
           </Button>
         </div>
       </div>

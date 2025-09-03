@@ -47,7 +47,7 @@ export const NavigationSheet = () => {
           <div className="flex flex-row-reverse gap-2 md:hidden mt-4">
             <ThemeToggleButton variant="circle-blur" start="top-right" />
             <Button
-              className="w-45 rounded-full"
+              className="w-45"
               onClick={handleButtonClick}
             >
               {status === "authenticated" ? "Dashboard" : "Get Started"}

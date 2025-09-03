@@ -1,6 +1,8 @@
 "use client";
 import { ThemeProvider } from "@/components/ui/theme-provider"
 import { SessionProvider } from "next-auth/react";
+import { ProjectProvider } from "@/providers/ProjectContext";
+
 
 
 export default function Provider({ children }) {
@@ -9,6 +11,6 @@ export default function Provider({ children }) {
             defaultTheme="system"
             enableSystem
           >
-          <SessionProvider>{children}</SessionProvider>
+          <SessionProvider> <ProjectProvider>{children}</ProjectProvider></SessionProvider>
           </ThemeProvider>);
 }

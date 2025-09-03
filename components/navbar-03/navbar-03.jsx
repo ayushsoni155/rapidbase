@@ -28,7 +28,7 @@ const Navbar03Page = () => {
       <div className="flex fixed top-1 justify-center items-center w-full py-2 z-50">
         <nav
           className="flex h-14 w-full max-w-5xl items-center justify-between px-3 
-               rounded-full border bg-background shadow-sm shadow-[0_0_15px] shadow-primary/40 dark:shadow-[0_0_20px] dark:shadow-primary/30
+                border bg-background shadow-sm shadow-[0_0_15px] shadow-primary/40 dark:shadow-[0_0_20px] dark:shadow-primary/30
                transition-all"
         >
           {/* Left */}
@@ -43,7 +43,7 @@ const Navbar03Page = () => {
           <div className="flex items-center gap-3 ">
             <div className="flex items-center gap-3 hidden sm:flex">
               <Button
-                className="rounded-full px-4 py-2"
+                className="px-4 py-2"
                 onClick={handleButtonClick}
               >
                 {status === "authenticated" ? "Dashboard" : "Get Started"}
