@@ -15,6 +15,7 @@ export const authOptions = {
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
+   debug: true,
 
   callbacks: {
     // When user signs in with OAuth
