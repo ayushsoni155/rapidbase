@@ -9,6 +9,7 @@ import LoginPopup from "@/components/global/LoginPopup";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from 'nextjs-toploader/app';
+import { toast } from "sonner"
 
 const Hero07 = () => {
   const { data: session, status } = useSession();
@@ -58,7 +59,7 @@ const Hero07 = () => {
             <Button
               variant="outline"
               size="lg"
-              onClick={() => signOut()}
+              onClick={() => toast.info("Coming soon!")}
               className=" text-base shadow-none"
             >
               <CirclePlay className="!h-5 !w-5" /> Watch Demo

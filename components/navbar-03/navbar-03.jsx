@@ -2,13 +2,15 @@
 
 import React, { useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from 'nextjs-toploader/app';
-import LoginPopup from "@/components/global/LoginPopup";
+import { useRouter } from "nextjs-toploader/app";
+import { Bot, ArrowUpRight } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
+import ThemeToggleButton from "@/components/ui/theme-toggle-button";
+import { ProfilePopup } from "@/components/global/ProfilePopup";
+import LoginPopup from "@/components/global/LoginPopup";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
-import { ArrowUpRight, Bot } from "lucide-react";
-import ThemeToggleButton from "@/components/ui/theme-toggle-button";
 
 const Navbar03Page = () => {
   const { data: session, status } = useSession();
@@ -17,9 +19,9 @@ const Navbar03Page = () => {
 
   const handleButtonClick = () => {
     if (status === "authenticated") {
-      router.push("/project/create-project"); // redirect without refresh
+      router.push("/project/create-project");
     } else {
-      setIsLoginOpen(true); // open login popup
+      setIsLoginOpen(true);
     }
   };
 
@@ -27,37 +29,45 @@ const Navbar03Page = () => {
     <>
       <div className="fixed top-0 md:top-2 flex justify-center items-center w-full py-0 md:py-3 z-50">
         <nav
-          className="flex h-14 w-full max-w-5xl items-center justify-between px-3 
-                border bg-background shadow-sm shadow-[0_0_15px] shadow-primary/40 dark:shadow-[0_0_20px] dark:shadow-primary/30
-               transition-all"
+          className="flex h-14 w-full max-w-6xl items-center justify-between px-4
+          border bg-background shadow-sm shadow-[0_0_15px] shadow-primary/40
+          dark:shadow-[0_0_20px] dark:shadow-primary/30 transition-all rounded-xl"
         >
-          {/* Left */}
+          {/* Left Section */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1 font-semibold ml-1">
               <Bot className="h-5 w-5" /> Rapidbase
             </div>
+            {/* Desktop NavMenu */}
             <NavMenu className="hidden md:block" />
           </div>
 
-          {/* Right */}
-          <div className="flex items-center gap-3 ">
-            <div className="flex items-center gap-3 hidden sm:flex">
-              <Button className="px-4 py-2" onClick={handleButtonClick}>
-                {status === "authenticated" ? "Dashboard" : "Get Started"}
-                <ArrowUpRight className="ml-1 h-4 w-4" />
-              </Button>
+          {/* Right Section */}
+          <div className="flex items-center gap-1">
+            {/* CTA (Desktop Only) */}
+            <Button
+              className="px-4 hidden md:flex"
+              onClick={handleButtonClick}
+            >
+              {status === "authenticated" ? "Dashboard" : "Get Started"}
+              <ArrowUpRight className="ml-1 h-4 w-4" />
+            </Button>
+
+            {/* Symmetric Icons (Desktop Only) */}
+            <div className="hidden md:flex items-center">
+              <ProfilePopup />
               <ThemeToggleButton variant="circle-blur" start="top-right" />
             </div>
-            <div className=" flex gap-2 md:hidden">
-              <div className="sm:hidden">
-                {" "}
-                <ThemeToggleButton variant="circle-blur" start="top-right" />
-              </div>
+
+            {/* Mobile Controls */}
+            <div className="flex items-center md:hidden">
+              <ProfilePopup />
               <NavigationSheet />
             </div>
           </div>
         </nav>
       </div>
+
       <LoginPopup open={isLoginOpen} onOpenChange={setIsLoginOpen} />
     </>
   );

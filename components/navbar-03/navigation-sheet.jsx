@@ -2,14 +2,17 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from 'nextjs-toploader/app';
+import { useRouter } from "nextjs-toploader/app";
+import Link from "next/link";
+import { Bot, Menu, ArrowUpRight } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, ArrowUpRight, Bot } from "lucide-react";
-import { features, resources,pricing } from "./config";
-import Link from "next/link";
 import { DialogTitle } from "@/components/ui/dialog";
 import LoginPopup from "@/components/global/LoginPopup";
+
+import { features, resources, pricing } from "./config";
+import ThemeToggleButton from "../ui/theme-toggle-button";
 
 export const NavigationSheet = () => {
   const { data: session, status } = useSession();
@@ -18,9 +21,9 @@ export const NavigationSheet = () => {
 
   const handleButtonClick = () => {
     if (status === "authenticated") {
-      router.push("/project/create-project"); // logged in → go to project page
+      router.push("/project/create-project");
     } else {
-      setIsLoginOpen(true); // not logged in → show popup
+      setIsLoginOpen(true);
     }
   };
 
@@ -28,43 +31,42 @@ export const NavigationSheet = () => {
     <>
       <Sheet>
         <SheetTrigger asChild>
-          {/* Mobile Menu Button */}
           <Button variant="outline" size="icon" className="md:hidden">
             <Menu />
           </Button>
         </SheetTrigger>
 
-        <SheetContent side="left" className="w-64 p-4">
-          {/* Accessibility fix */}
+        <SheetContent side="left" className="w-72 p-5 space-y-6">
           <DialogTitle className="sr-only">Navigation Menu</DialogTitle>
 
           {/* Logo */}
-           <div className="flex items-center gap-1 font-semibold ml-1">
-                        <Bot className="h-5 w-5" /> Rapidbase
-                      </div>
+          <div className="flex items-center gap-2 font-semibold">
+            <Bot className="h-5 w-5" /> Rapidbase
+          </div>
 
-          {/* Mobile-only Actions */}
-      
-            <Button
-              className="w-full"
-              onClick={handleButtonClick}
-            >
-              {status === "authenticated" ? "Dashboard" : "Get Started"}
-              <ArrowUpRight className="ml-2 h-4 w-4" />
-            </Button>
-         
-
+          {/* CTA */}
+          <div className="flex flex-row gap-3">
+          <Button className="w-50" onClick={handleButtonClick}>
+            {status === "authenticated" ? "Dashboard" : "Get Started"}
+            <ArrowUpRight className="ml-2 h-4 w-4" />
+          </Button>
+          <ThemeToggleButton variant="circle-blur" start="top-right" />
+          </div>
           {/* Links */}
-          <div className=" font-bold space-y-4">
-            <Link href="/">Home</Link>
+          <div className="space-y-6">
+            {/* Home */}
+            <Link href="/" className="block font-bold">
+              Home
+            </Link>
 
+            {/* Features */}
             <div>
               <div className="font-bold">Features</div>
-              <ul className="mt-2 space-y-2 ml-2 border-l pl-2">
+              <ul className="mt-2 space-y-2 ml-3 border-l pl-3">
                 {features.map((f) => (
                   <li key={f.title}>
-                    <Link href="#">
-                      <f.icon className="inline-block mr-2 h-4 w-4 text-muted-foreground" />
+                    <Link href={f.href || "#"} className="flex items-center gap-2">
+                      <f.icon className="h-4 w-4 text-muted-foreground" />
                       {f.title}
                     </Link>
                   </li>
@@ -72,27 +74,30 @@ export const NavigationSheet = () => {
               </ul>
             </div>
 
+            {/* Resources */}
             <div>
               <div className="font-bold">Documents</div>
-              <ul className="mt-2 space-y-2 ml-2 border-l pl-2">
+              <ul className="mt-2 space-y-2 ml-3 border-l pl-3">
                 {resources.map((r) => (
                   <li key={r.title}>
-                    <Link href="#">
-                      <r.icon className="inline-block mr-2 h-4 w-4 text-muted-foreground" />
+                    <Link href={r.href || "#"} className="flex items-center gap-2">
+                      <r.icon className="h-4 w-4 text-muted-foreground" />
                       {r.title}
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
-              <div>
+
+            {/* Pricing */}
+            <div>
               <div className="font-bold">Prices</div>
-              <ul className="mt-2 space-y-2 ml-2 border-l pl-2">
-                {pricing.map((r) => (
-                  <li key={r.title}>
-                    <Link href="#">
-                      <r.icon className="inline-block mr-2 h-4 w-4 text-muted-foreground" />
-                      {r.title}
+              <ul className="mt-2 space-y-2 ml-3 border-l pl-3">
+                {pricing.map((p) => (
+                  <li key={p.title}>
+                    <Link href={p.href || "#"} className="flex items-center gap-2">
+                      <p.icon className="h-4 w-4 text-muted-foreground" />
+                      {p.title}
                     </Link>
                   </li>
                 ))}
