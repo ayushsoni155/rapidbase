@@ -2,28 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 
 export default function AuthErrorPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const error = searchParams.get("error") || "Unknown";
-
-  // Map NextAuth error codes → readable messages
-  const errorMessages = {
-    OAuthSignin: "Error in OAuth sign-in. Please try again.",
-    OAuthCallback: "OAuth callback failed. Please retry.",
-    OAuthCreateAccount: "Failed to create account with provider.",
-    EmailCreateAccount: "Failed to create account with email.",
-    Callback: "Login callback failed.",
-    OAuthAccountNotLinked:
-      "This email is already linked with another provider. Try logging in differently.",
-    EmailSignin: "Error sending email. Please try again.",
-    CredentialsSignin: "Invalid credentials. Please check your details.",
-    default: "Something went wrong during login. Please try again.",
-  };
-
-  const message = errorMessages[error] || errorMessages.default;
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center text-center px-6 overflow-hidden">
@@ -47,22 +29,23 @@ export default function AuthErrorPage() {
       </div>
 
       {/* Error Title */}
-      <h1 className="text-6xl font-extrabold bg-gradient-to-r from-red-500 to-gray-400
-             bg-clip-text text-transparent animate-pulse drop-shadow-lg">
+      <h1
+        className="text-6xl font-extrabold bg-gradient-to-r from-red-500 to-gray-400
+             bg-clip-text text-transparent animate-pulse drop-shadow-lg"
+      >
         Authentication Error
       </h1>
 
-      <h2 className="mt-4 text-xl font-semibold text-foreground">{message}</h2>
-      <p className="mt-2 text-muted-foreground max-w-md">
-        Error code: <span className="font-mono text-red-500">{error}</span>
-      </p>
+      <h2 className="mt-4 text-xl font-semibold text-foreground">
+        Something went wrong during login. Please try again.
+      </h2>
 
       {/* Buttons */}
       <div className="mt-6 flex gap-4">
         <Button
           size="lg"
           className="shadow-lg shadow-red-500/40"
-        onClick={() => router.back()}
+          onClick={() => router.back()}
         >
           Go Back
         </Button>
@@ -71,9 +54,9 @@ export default function AuthErrorPage() {
           variant="outline"
           size="lg"
           className="hover:shadow-lg hover:shadow-orange-400/30"
-         onClick={() => window.location.reload()}
+          onClick={() => router.push("/")}
         >
-          Try Again
+          Home
         </Button>
       </div>
     </div>
