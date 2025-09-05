@@ -18,7 +18,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useProjects } from "@/providers/ProjectContext";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'nextjs-toploader/app';
 import { Skeleton } from "@/components/ui/skeleton";
 import { CreateProjectDialog } from "@/components/project/create-project-dialog";
 

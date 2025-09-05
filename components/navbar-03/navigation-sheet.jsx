@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'nextjs-toploader/app';
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ArrowUpRight, Bot } from "lucide-react";
@@ -55,8 +55,8 @@ export const NavigationSheet = () => {
          
 
           {/* Links */}
-          <div className="space-y-4">
-            <Link href="#">Home</Link>
+          <div className=" font-bold space-y-4">
+            <Link href="/">Home</Link>
 
             <div>
               <div className="font-bold">Features</div>

@@ -2,9 +2,6 @@
 
 import React from "react";
 import Breadcrump from "@/components/global/Breadcrumb";
-import { Separator } from "@/components/ui/separator";
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import { ThemeToggle } from "../global/ThemeToggel";
 import CommandMenu from "../global/CommandMenu";
 import ThemeToggleButton from "@/components/ui/theme-toggle-button";
 

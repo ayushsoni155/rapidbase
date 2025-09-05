@@ -16,6 +16,10 @@ export const authOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
    debug: true,
+    pages: {
+    signIn: "/",        // show homepage instead of /auth/signin
+   error: "/login-error",
+  },
 
   callbacks: {
     // When user signs in with OAuth

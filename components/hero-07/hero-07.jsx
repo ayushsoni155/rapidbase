@@ -8,7 +8,7 @@ import { signOut } from "next-auth/react";
 import LoginPopup from "@/components/global/LoginPopup";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'nextjs-toploader/app';
 
 const Hero07 = () => {
   const { data: session, status } = useSession();

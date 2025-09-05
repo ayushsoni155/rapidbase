@@ -25,7 +25,7 @@ import { MoreVertical, Trash2, Pencil, Plus } from "lucide-react";
 import { EditProjectDialog } from "./edit-project-dialog";
 import { DeleteProjectAlert } from "./delete-project-alert";
 import { CreateProjectDialog } from "./create-project-dialog";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'nextjs-toploader/app';
 import { useProjects } from "@/providers/ProjectContext";
 
 export function ProjectCard({ project, mutate }) {

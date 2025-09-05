@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation"; // for client-side navigation
+import { useRouter } from 'nextjs-toploader/app';
 import LoginPopup from "@/components/global/LoginPopup";
 import { Button } from "@/components/ui/button";
 import { NavMenu } from "./nav-menu";

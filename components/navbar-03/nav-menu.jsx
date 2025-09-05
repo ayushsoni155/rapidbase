@@ -18,7 +18,7 @@ export const NavMenu = (props) => (
     <NavigationMenuList className="gap-1 space-x-0 text-sm">
       <NavigationMenuItem>
         <Button variant="ghost" className="text-[15px] font-normal" asChild>
-          <Link href="#">Home</Link>
+          <Link href="/">Home</Link>
         </Button>
       </NavigationMenuItem>
       <NavigationMenuItem>
