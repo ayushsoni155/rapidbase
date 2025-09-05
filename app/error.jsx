@@ -26,7 +26,7 @@ export default function ErrorPage() {
           animate={{ scale: [1, 1.15, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
-      </div>
+      </div> 
 
 
       {/* Error Title */}
