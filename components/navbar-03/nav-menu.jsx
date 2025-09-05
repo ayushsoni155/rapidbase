@@ -11,7 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
-import { features, resources } from "./config";
+import { features, resources,pricing } from "./config";
 
 export const NavMenu = (props) => (
   <NavigationMenu {...props}>
@@ -38,7 +38,7 @@ export const NavMenu = (props) => (
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuTrigger className="text-[15px] font-normal">
-          Documents
+          Resources
         </NavigationMenuTrigger>
         <NavigationMenuContent>
           <ul
@@ -53,14 +53,14 @@ export const NavMenu = (props) => (
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuTrigger className="text-[15px] font-normal">
-          Price
+          Pricing
         </NavigationMenuTrigger>
         <NavigationMenuContent>
           <ul
             className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-            { resources.map((menuItem) => (
-              <ListItem key={menuItem.title} title={menuItem.title} icon={menuItem.icon} href="#">
-                {menuItem.description}
+            { pricing .map((price) => (
+              <ListItem key={price.title} title={price.title} icon={price.icon} href="#">
+                {price.description}
               </ListItem>
             ))}
           </ul>

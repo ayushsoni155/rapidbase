@@ -5,12 +5,10 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, ArrowUpRight } from "lucide-react";
-import { features, resources } from "./config";
-import { Logo } from "./logo";
+import { Menu, ArrowUpRight, Bot } from "lucide-react";
+import { features, resources,pricing } from "./config";
 import Link from "next/link";
 import { DialogTitle } from "@/components/ui/dialog";
-import ThemeToggleButton from "@/components/ui/theme-toggle-button";
 import LoginPopup from "@/components/global/LoginPopup";
 
 export const NavigationSheet = () => {
@@ -41,22 +39,23 @@ export const NavigationSheet = () => {
           <DialogTitle className="sr-only">Navigation Menu</DialogTitle>
 
           {/* Logo */}
-          <Logo />
+           <div className="flex items-center gap-1 font-semibold ml-1">
+                        <Bot className="h-5 w-5" /> Rapidbase
+                      </div>
 
           {/* Mobile-only Actions */}
-          <div className="flex flex-row-reverse gap-2 md:hidden mt-4">
-            <ThemeToggleButton variant="circle-blur" start="top-right" />
+      
             <Button
-              className="w-45"
+              className="w-full"
               onClick={handleButtonClick}
             >
               {status === "authenticated" ? "Dashboard" : "Get Started"}
               <ArrowUpRight className="ml-2 h-4 w-4" />
             </Button>
-          </div>
+         
 
           {/* Links */}
-          <div className="space-y-4 mt-6">
+          <div className="space-y-4">
             <Link href="#">Home</Link>
 
             <div>
@@ -74,9 +73,22 @@ export const NavigationSheet = () => {
             </div>
 
             <div>
-              <div className="font-bold">Resources</div>
+              <div className="font-bold">Documents</div>
               <ul className="mt-2 space-y-2 ml-2 border-l pl-2">
                 {resources.map((r) => (
+                  <li key={r.title}>
+                    <Link href="#">
+                      <r.icon className="inline-block mr-2 h-4 w-4 text-muted-foreground" />
+                      {r.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+              <div>
+              <div className="font-bold">Prices</div>
+              <ul className="mt-2 space-y-2 ml-2 border-l pl-2">
+                {pricing.map((r) => (
                   <li key={r.title}>
                     <Link href="#">
                       <r.icon className="inline-block mr-2 h-4 w-4 text-muted-foreground" />

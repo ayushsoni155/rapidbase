@@ -25,7 +25,7 @@ const Navbar03Page = () => {
 
   return (
     <>
-      <div className="flex fixed top-1 justify-center items-center w-full py-2 z-50">
+      <div className="fixed top-0 md:top-2 flex justify-center items-center w-full py-0 md:py-3 z-50">
         <nav
           className="flex h-14 w-full max-w-5xl items-center justify-between px-3 
                 border bg-background shadow-sm shadow-[0_0_15px] shadow-primary/40 dark:shadow-[0_0_20px] dark:shadow-primary/30
@@ -42,16 +42,17 @@ const Navbar03Page = () => {
           {/* Right */}
           <div className="flex items-center gap-3 ">
             <div className="flex items-center gap-3 hidden sm:flex">
-              <Button
-                className="px-4 py-2"
-                onClick={handleButtonClick}
-              >
+              <Button className="px-4 py-2" onClick={handleButtonClick}>
                 {status === "authenticated" ? "Dashboard" : "Get Started"}
                 <ArrowUpRight className="ml-1 h-4 w-4" />
               </Button>
               <ThemeToggleButton variant="circle-blur" start="top-right" />
             </div>
-            <div className="md:hidden">
+            <div className=" flex gap-2 md:hidden">
+              <div className="sm:hidden">
+                {" "}
+                <ThemeToggleButton variant="circle-blur" start="top-right" />
+              </div>
               <NavigationSheet />
             </div>
           </div>

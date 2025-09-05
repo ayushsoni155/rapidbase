@@ -1,16 +1,3 @@
-
-import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import React from "react";
 import {
   Database,
   BarChart3,
@@ -20,6 +7,7 @@ import {
   FileText,
   Rocket,
   Lock,
+  Tag,
 } from "lucide-react";
 
 // RapidBase Menu Items
@@ -67,4 +55,25 @@ export const resources = [
     icon: Rocket,
     description: "See upcoming features and planned improvements.",
   },
+];
+
+// Pricing Plans (array, same format as features/resources)
+export const pricing = [
+  {
+    title: "Free",
+    icon: Tag,
+    description: "$0 — 1 Project, 5 Tables, 1,000 rows per table, Basic CRUD UI, Community Support",
+  },
+  {
+    title: "Pro",
+    icon: Tag,
+    description:
+      "$19/month — 10 Projects, 5 Tables, 50000 rows per table, Advanced Dashboards, Community Support",
+  },
+  {
+    title: "Premium",
+    icon: Tag,
+    description:
+      "$49/month — 50 Projects, 100 Tables, 1M rows per table, Role-based Access, Advanced Dashboards, Priority Support",
+  }
 ];
