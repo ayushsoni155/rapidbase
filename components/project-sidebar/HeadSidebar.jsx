@@ -4,13 +4,12 @@ import React from "react";
 import Breadcrump from "@/components/global/Breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { ThemeToggle } from "../global/ThemeToggel";
 import CommandMenu from "../global/CommandMenu";
 import ThemeToggleButton from "@/components/ui/theme-toggle-button";
 
 function HeadSidebar() {
   return (
-    <header className="flex h-12 shrink-0 items-center bg-background px-4">
+    <header className="sticky top-0 z-50 flex h-12 shrink-0 items-center bg-background px-4">
       <div className="flex w-full items-center justify-between gap-3">
         {/* Left Section: Sidebar + Breadcrumb */}
         <div className="flex items-center gap-3 min-w-0">
@@ -35,7 +34,7 @@ function HeadSidebar() {
         </div>
       </div>
     </header>
-  );
+  ); 
 }
 
 export default HeadSidebar;

@@ -6,13 +6,15 @@ import { ProjectProvider } from "@/providers/ProjectContext";
 import ClientTopLoader from "@/providers/ClientTopLoader";
 import { Toaster } from "@/components/ui/sonner";
 import SessionWatcher from "@/providers/SessionWatcher";
+import { TableProvider } from "./TableContext";
 
 export default function Provider({ children }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <SessionProvider>
         <ProjectProvider>
-          <ClientTopLoader />
+           <TableProvider>
+             <ClientTopLoader />
           <Toaster
             expand={false}
             position="top-center"
@@ -21,6 +23,7 @@ export default function Provider({ children }) {
           />
           <SessionWatcher />
           {children}
+          </TableProvider>
         </ProjectProvider>
       </SessionProvider>
     </ThemeProvider>
