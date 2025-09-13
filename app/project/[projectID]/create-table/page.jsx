@@ -20,9 +20,15 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 import { toast } from "sonner";
 import { Plus, Trash2, Info, Loader2 } from "lucide-react";
 import { useTables } from "@/providers/TableContext"; // Import useTables
+import { useMediaQuery } from "react-responsive"; // Import useMediaQuery
 
 const DATA_TYPES = [
   { value: "UUID", description: "Unique identifier. Great for primary keys." },
@@ -72,6 +78,8 @@ const CreateTablePage = () => {
       referencesColumn: "",
     },
   ]);
+
+  const isDesktop = useMediaQuery({ minWidth: 768 });
 
   const handleColumnChange = (index, field, value) => {
     const newCols = [...columns];
@@ -219,26 +227,45 @@ const CreateTablePage = () => {
                   <div className="space-y-2">
                     <Label className="flex items-center gap-1">
                       Data Type
-                      <TooltipProvider>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            {/* Make the icon focusable and clickable */}
+                      {isDesktop ? (
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <button
+                                type="button"
+                                className="text-muted-foreground hover:text-foreground"
+                              >
+                                <Info className="h-4 w-4" />
+                              </button>
+                            </TooltipTrigger>
+                            <TooltipContent className="max-w-xs space-y-1">
+                              {DATA_TYPES.map((t) => (
+                                <p key={t.value}>
+                                  <strong>{t.value}</strong> – {t.description}
+                                </p>
+                              ))}
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      ) : (
+                        <Popover>
+                          <PopoverTrigger asChild>
                             <button
                               type="button"
                               className="text-muted-foreground hover:text-foreground"
                             >
                               <Info className="h-4 w-4" />
                             </button>
-                          </TooltipTrigger>
-                          <TooltipContent className="max-w-xs space-y-1">
+                          </PopoverTrigger>
+                          <PopoverContent className="max-w-xs space-y-1">
                             {DATA_TYPES.map((t) => (
                               <p key={t.value}>
                                 <strong>{t.value}</strong> – {t.description}
                               </p>
                             ))}
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
+                          </PopoverContent>
+                        </Popover>
+                      )}
                     </Label>
                     <Select
                       onValueChange={(v) =>
@@ -264,18 +291,39 @@ const CreateTablePage = () => {
                 <div className="space-y-2">
                   <Label className="flex items-center gap-1">
                     Constraints
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          {/* Make the icon focusable and clickable */}
+                    {isDesktop ? (
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button
+                              type="button"
+                              className="text-muted-foreground hover:text-foreground"
+                            >
+                              <Info className="h-4 w-4" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent className="max-w-sm space-y-1">
+                            {Object.values(CONSTRAINTS).map(
+                              ({ label, description }) => (
+                                <p key={label}>
+                                  <strong>{label}:</strong> {description}
+                                </p>
+                              )
+                            )}
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    ) : (
+                      <Popover>
+                        <PopoverTrigger asChild>
                           <button
                             type="button"
                             className="text-muted-foreground hover:text-foreground"
                           >
                             <Info className="h-4 w-4" />
                           </button>
-                        </TooltipTrigger>
-                        <TooltipContent className="max-w-sm space-y-1">
+                        </PopoverTrigger>
+                        <PopoverContent className="max-w-sm space-y-1">
                           {Object.values(CONSTRAINTS).map(
                             ({ label, description }) => (
                               <p key={label}>
@@ -283,9 +331,9 @@ const CreateTablePage = () => {
                               </p>
                             )
                           )}
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
+                        </PopoverContent>
+                      </Popover>
+                    )}
                   </Label>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {Object.entries(CONSTRAINTS).map(([key, { label }]) => (
