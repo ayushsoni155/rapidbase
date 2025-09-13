@@ -36,7 +36,7 @@ const Navbar03Page = () => {
           {/* Left Section */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1 font-semibold ml-1">
-              <Bot className="h-5 w-5" /> Rapidbase
+              <Bot className="h-5 w-5" /> GoRapidBase
             </div>
             {/* Desktop NavMenu */}
             <NavMenu className="hidden md:block" />

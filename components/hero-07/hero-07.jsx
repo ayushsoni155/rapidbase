@@ -45,7 +45,7 @@ const Hero07 = () => {
           </h1>
 
           <p className="mt-6 text-[17px] md:text-lg">
-            RapidBase lets you create databases, auto-generated dashboards, and
+            GoRapidBase lets you create databases, auto-generated dashboards, and
             REST APIs — all without writing code. From schema design to data
             visualization, everything is instant, intuitive, and built for
             teams.

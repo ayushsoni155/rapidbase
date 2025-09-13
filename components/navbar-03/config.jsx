@@ -10,7 +10,7 @@ import {
   Tag,
 } from "lucide-react";
 
-// RapidBase Menu Items
+// GoRapidBase Menu Items
 export const features = [
   {
     title: "Visual Schema Builder",
@@ -43,7 +43,7 @@ export const resources = [
   {
     title: "Documentation",
     icon: FileText,
-    description: "Learn how to use RapidBase with guides and examples.",
+    description: "Learn how to use GoRapidBase with guides and examples.",
   },
   {
     title: "Security",

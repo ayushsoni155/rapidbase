@@ -67,7 +67,7 @@ export default function CommandMenu() {
         <DialogContent className="p-0 shadow-lg border-none max-w-lg w-[90%] sm:w-full">
           <DialogTitle className="sr-only">Command Menu</DialogTitle>
           <Command className="rounded-lg border shadow-md">
-            <CommandInput placeholder="Search RapidBase features..." />
+            <CommandInput placeholder="Search GoRapidBase features..." />
             <CommandList>
               <CommandEmpty>No results found.</CommandEmpty>
               <CommandGroup heading="Quick Access">

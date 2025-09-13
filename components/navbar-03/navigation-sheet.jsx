@@ -41,7 +41,7 @@ export const NavigationSheet = () => {
 
           {/* Logo */}
           <div className="flex items-center gap-2 font-semibold">
-            <Bot className="h-5 w-5" /> Rapidbase
+            <Bot className="h-5 w-5" /> GoRapidBase
           </div>
 
           {/* CTA */}

@@ -52,7 +52,7 @@ const Footer01Page = () => {
           <div className="col-span-full lg:col-span-2">
             <div className="flex  items-center gap-2 font-semibold text-lg">
              <Bot/>
-              Rapidbase
+              GoRapidBase
             </div>
             <p className="mt-4 text-muted-foreground text-sm leading-relaxed">
               Build Databases & Dashboards — <br /> In Minutes, Not Weeks
