@@ -222,7 +222,13 @@ const CreateTablePage = () => {
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Info className="h-4 w-4 text-muted-foreground cursor-pointer" />
+                            {/* Make the icon focusable and clickable */}
+                            <button
+                              type="button"
+                              className="text-muted-foreground hover:text-foreground"
+                            >
+                              <Info className="h-4 w-4" />
+                            </button>
                           </TooltipTrigger>
                           <TooltipContent className="max-w-xs space-y-1">
                             {DATA_TYPES.map((t) => (
@@ -261,7 +267,13 @@ const CreateTablePage = () => {
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <Info className="h-4 w-4 text-muted-foreground cursor-pointer" />
+                          {/* Make the icon focusable and clickable */}
+                          <button
+                            type="button"
+                            className="text-muted-foreground hover:text-foreground"
+                          >
+                            <Info className="h-4 w-4" />
+                          </button>
                         </TooltipTrigger>
                         <TooltipContent className="max-w-sm space-y-1">
                           {Object.values(CONSTRAINTS).map(
@@ -356,7 +368,7 @@ const CreateTablePage = () => {
                       onClick={() => removeColumn(index)}
                       className="flex items-center gap-1"
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-4 w-4 mr-1" />
                       Remove Column
                     </Button>
                   </div>
